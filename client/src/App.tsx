@@ -7,6 +7,7 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { Navbar, NewPost, Posts } from "./components";
 
 if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
@@ -18,6 +19,9 @@ const ClerkProviderWithRoutes = () => {
 
   return (
     <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
+      <SignedIn>
+        <Navbar />
+      </SignedIn>
       <Routes>
         <Route
           path="/sign-in/*"
@@ -27,8 +31,27 @@ const ClerkProviderWithRoutes = () => {
           path="/sign-up/*"
           element={<SignUp routing="path" path="/sign-up" />}
         />
+        <Route path="/" element={<SignedInOrOut childComp={<Posts />} />} />
+        <Route
+          path="/new-post"
+          element={<SignedInOrOut childComp={<NewPost />} />}
+        />
       </Routes>
     </ClerkProvider>
+  );
+};
+
+interface ParentCompProps {
+  childComp?: React.ReactNode;
+}
+const SignedInOrOut: React.FC<ParentCompProps> = ({ childComp }) => {
+  return (
+    <>
+      <SignedIn>{childComp}</SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
   );
 };
 
