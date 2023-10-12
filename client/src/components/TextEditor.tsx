@@ -83,17 +83,15 @@ const handleProcedureContentChange = (content: any) => {
 
 const TextEditor = () => {
   return (
-    <div>
-      <div style={{ display: "grid", justifyContent: "center" }}>
-        <ReactQuill
-          theme="snow"
-          modules={modules}
-          formats={formats}
-          placeholder="write your content ...."
-          onChange={handleProcedureContentChange}
-          style={{ height: "220px" }}
-        ></ReactQuill>
-      </div>
+    <div className="w-full">
+      <ReactQuill
+        theme="snow"
+        modules={modules}
+        formats={formats}
+        placeholder="write your content ...."
+        onChange={handleProcedureContentChange}
+        style={{ height: "220px" }}
+      ></ReactQuill>
     </div>
   );
 };
