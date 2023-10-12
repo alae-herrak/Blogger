@@ -77,11 +77,11 @@ var formats = [
   "size",
 ];
 
-const handleProcedureContentChange = (content: any) => {
-  console.log("content---->", content);
-};
+interface props {
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const TextEditor = () => {
+const TextEditor: React.FC<props> = ({ setContent }) => {
   return (
     <div className="w-full">
       <ReactQuill
@@ -89,7 +89,7 @@ const TextEditor = () => {
         modules={modules}
         formats={formats}
         placeholder="write your content ...."
-        onChange={handleProcedureContentChange}
+        onChange={(content) => setContent(content)}
         style={{ height: "220px" }}
       ></ReactQuill>
     </div>

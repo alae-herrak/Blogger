@@ -3,6 +3,7 @@ import TextEditor from "./TextEditor";
 
 const NewPost = () => {
   const [title, settitle] = useState<string>("");
+  const [content, setcontent] = useState<string>("");
 
   return (
     <div className="flex w-full">
@@ -28,7 +29,7 @@ const NewPost = () => {
           className="flex flex-wrap gap-2 text-xl tracking-widest"
         >
           Content
-          <TextEditor />
+          <TextEditor setContent={setcontent}/>
         </label>
         <div className="mt-20 flex justify-end absolute lg:relative bottom-2 right-2 lg:bottom-0 lg:right-0">
           <button className="rounded-sm bg-slate-600 px-4 py-2 text-white shadow-lg hover:bg-slate-600/80">
