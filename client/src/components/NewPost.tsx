@@ -20,7 +20,7 @@ const NewPost = () => {
     };
 
     createPost(post)
-      .then((res) => {
+      .then(() => {
         navigate("/");
       })
       .catch((err) => console.error(err));
