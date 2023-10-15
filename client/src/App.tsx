@@ -7,6 +7,7 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+
 import { Navbar, NewPost, Posts } from "./components";
 
 if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+
 import TextEditor from "./TextEditor";
 import { Post, createPost } from "../api/post";
 
-const NewPost = () => {
+const NewPost: React.FC = () => {
   const { userId } = useAuth();
 
   const navigate = useNavigate();
